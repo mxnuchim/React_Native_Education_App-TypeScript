@@ -156,8 +156,11 @@ export default function HomeScreen() {
       </View>
       <ScrollView
         showsVerticalScrollIndicator={false}
-        className={`h-full w-full`}
-        contentContainerStyle={{ paddingBottom: '50%' }}
+        className={`w-full ${Platform.OS === 'web' ? 'h-[100vh]' : 'h-full'}`}
+        contentContainerStyle={{
+          paddingBottom: '50%',
+          width: '100%',
+        }}
       >
         {/** ========================= Teachers Section =========================== */}
         <View className="mt-2">
@@ -221,6 +224,7 @@ export default function HomeScreen() {
           </Collapsible>
 
           {/** ========================= Render List of institutions =========================== */}
+
           <View
             className={`w-full bg-transparent ${
               institutionsFilterVisible ? 'pt-0' : 'pt-4'

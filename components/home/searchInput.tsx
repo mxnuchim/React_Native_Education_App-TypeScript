@@ -45,7 +45,7 @@ const SearchInput = ({
 
         <View
           className={`absolute right-0 flex items-center justify-center  py-2 bg-bgPurple rounded-lg ${
-            Platform.OS === 'web' ? 'px-2 mr-[1%]' : 'px-1 mr-[2.5%]'
+            Platform.OS === 'web' ? 'px-2 mr-[2%]' : 'px-1 mr-[2.5%]'
           }`}
         >
           <Icon className="text-white" size={20} />
