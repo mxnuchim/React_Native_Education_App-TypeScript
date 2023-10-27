@@ -3,8 +3,8 @@ import React from 'react';
 
 const StreamScreen = () => {
   return (
-    <View>
-      <Text>StreamScreen</Text>
+    <View className="flex flex-1 justify-center items-center">
+      <Text>Stream Screen</Text>
     </View>
   );
 };

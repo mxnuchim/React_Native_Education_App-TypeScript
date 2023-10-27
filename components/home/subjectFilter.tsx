@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native';
 import React, { useState } from 'react';
 import FilterItem from './filterItem';
-import { SubjectFilter } from '../../types';
+import { SubjectFilterArray } from '../../types';
 
 interface SubjectFilterProps {
-  filters: SubjectFilter;
+  filters: SubjectFilterArray;
   onSubjectSelect: (subject: string) => void;
 }
 

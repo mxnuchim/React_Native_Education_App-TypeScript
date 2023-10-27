@@ -64,5 +64,5 @@ export type GradesData = string[];
 export type ProvincesData = string[];
 
 // Type for area filters and subject filters
-export type AreaFilter = string[];
-export type SubjectFilter = string[];
+export type AreaFilterArray = string[];
+export type SubjectFilterArray = string[];

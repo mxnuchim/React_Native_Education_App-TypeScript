@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native';
 import React, { useState } from 'react';
 import FilterItem from './filterItem';
-import { AreaFilter } from '../../types';
+import { AreaFilterArray } from '../../types';
 
 interface AreaFilterProps {
-  filters: AreaFilter;
+  filters: AreaFilterArray;
 }
 
 const AreaFilter = ({ filters }: AreaFilterProps) => {
