@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native';
+import { Platform, Text, View } from 'react-native';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -11,7 +11,9 @@ const SelectProvinceScreen = () => {
   const navigation = useNavigation<RootStackParamList>();
 
   return (
-    <SafeAreaView className="px-7 py-8">
+    <SafeAreaView
+      className={`px-7 py-8 ${Platform.OS === 'web' ? 'px-10' : ''}`}
+    >
       {/** ============== Header text component =========== */}
       <HeaderText text={"What's your province?"} />
 
@@ -21,7 +23,7 @@ const SelectProvinceScreen = () => {
       </View>
 
       {/** ========= Action button ================== */}
-      <View className="mt-[25%]">
+      <View className={`${Platform.OS === 'web' ? 'mt-[10%]' : 'mt-[25%]'}`}>
         <Button
           primaryBtnText={'Next'}
           onPrimaryBtnPress={() => navigation.navigate('Home')}

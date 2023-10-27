@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Pressable,
   ScrollView,
+  Platform,
 } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -38,7 +39,11 @@ export default function SignUpScreen() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-bgWhite px-8">
+    <SafeAreaView
+      className={`flex-1 bg-bgWhite px-8 ${
+        Platform.OS === 'web' ? 'px-10' : ''
+      }`}
+    >
       <ScrollView
         contentContainerStyle={{
           flex: 1,

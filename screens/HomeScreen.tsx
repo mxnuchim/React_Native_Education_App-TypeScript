@@ -5,6 +5,7 @@ import {
   Pressable,
   FlatList,
   ScrollView,
+  Platform,
 } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -59,7 +60,7 @@ export default function HomeScreen() {
 
   /**
    * @description handles search for teachers and institutions
-   * @param {*} searchQuery
+   * @param {string} searchQuery
    */
   const handleSearchChange = (searchQuery: string) => {
     setSearchQuery(searchQuery);
@@ -103,7 +104,11 @@ export default function HomeScreen() {
   };
 
   return (
-    <SafeAreaView className="bg-bgWhite px-7 pt-5 pb-[-35px] flex-1">
+    <SafeAreaView
+      className={`bg-bgWhite px-7 pt-5 pb-[-35px] flex-1 ${
+        Platform.OS === 'web' ? 'px-10' : ''
+      }`}
+    >
       {/**============= Header Area =================== */}
       <View className="flex flex-row items-center justify-between">
         <View className="">

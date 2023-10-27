@@ -12,7 +12,9 @@ import Button from '../../components/button';
 const SelectGradeScreen = () => {
   const navigation = useNavigation<RootStackParamList>();
   return (
-    <SafeAreaView className="px-7 py-8">
+    <SafeAreaView
+      className={`px-7 py-8 ${Platform.OS === 'web' ? 'px-10' : ''}`}
+    >
       {/** ============== Header text component =========== */}
       <HeaderText text={"What's your grade?"} />
 

@@ -3,7 +3,11 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import * as Font from 'expo-font';
 import RootNavigator from './navigation/RootNavigator';
-import { Text, View } from 'react-native';
+import { NativeWindStyleSheet } from 'nativewind';
+
+NativeWindStyleSheet.setOutput({
+  default: 'native',
+});
 
 export default function App() {
   const [isFontLoaded, setIsFontLoaded] = useState(false);

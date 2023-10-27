@@ -23,7 +23,11 @@ const { signin } = images;
 export default function SignInScreen() {
   const navigation = useNavigation<RootStackParamList>();
   return (
-    <View className="flex-1 bg-bgWhite px-8">
+    <View
+      className={`flex-1 bg-bgWhite px-8 ${
+        Platform.OS === 'web' ? 'px-10' : ''
+      }`}
+    >
       <ScrollView
         contentContainerStyle={{
           flex: 1,
