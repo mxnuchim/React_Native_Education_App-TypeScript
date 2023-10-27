@@ -4,13 +4,13 @@ import { ChevronDownIcon, ChevronUpIcon } from 'react-native-heroicons/solid';
 import { images } from '../assets';
 import { themeColors } from '../theme/colors';
 
-interface SubjectSelectorProps {
+interface SubjectPickerProps {
   grades: string;
 }
 
 const { ruler, paint, numbers, microscope } = images;
 
-const SubjectSelector = ({ grades }: SubjectSelectorProps) => {
+const SubjectPicker = ({ grades }: SubjectPickerProps) => {
   const [showDropDown, setShowDropDown] = useState(false);
   const [selectedSubject, setSelectedSubject] = useState('');
 
@@ -77,4 +77,4 @@ const SubjectSelector = ({ grades }: SubjectSelectorProps) => {
   );
 };
 
-export default SubjectSelector;
+export default SubjectPicker;
