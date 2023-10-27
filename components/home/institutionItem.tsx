@@ -1,4 +1,4 @@
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, Platform } from 'react-native';
 import React from 'react';
 import Rating from './rating';
 import { Institution } from '../../types';
@@ -7,9 +7,15 @@ interface InstitutionItemProps {
   institution: Institution;
 }
 
+const isWeb = Platform.OS === 'web';
+
 const InstitutionItem = ({ institution }: InstitutionItemProps) => {
   return (
-    <View className="bg-white rounded-xl flex flex-row w-full min-h-[176px] items-center justify-between p-2 mb-4 shadow">
+    <View
+      className={`bg-white rounded-xl flex flex-row  min-h-[176px] items-center p-2 mb-4 shadow ${
+        isWeb ? 'w-[70%] space-x-4' : 'justify-between w-full'
+      }`}
+    >
       {/**============== Institution Image ================ */}
       <View className="rounded-xl">
         <Image source={institution.image} style={{ height: 150, width: 140 }} />

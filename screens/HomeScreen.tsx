@@ -226,7 +226,7 @@ export default function HomeScreen() {
           {/** ========================= Render List of institutions =========================== */}
 
           <View
-            className={`w-full bg-transparent ${
+            className={`w-full bg-transparent items-center  ${
               institutionsFilterVisible ? 'pt-0' : 'pt-4'
             }`}
           >
