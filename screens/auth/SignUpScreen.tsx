@@ -6,6 +6,7 @@ import {
   Pressable,
   ScrollView,
   Platform,
+  KeyboardAvoidingView,
 } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -37,6 +38,8 @@ export default function SignUpScreen() {
     console.log('user data --> ', userData);
     navigation.navigate('SelectGrade');
   };
+
+  const isAndroid = Platform.OS === 'android';
 
   return (
     <SafeAreaView
@@ -81,13 +84,15 @@ export default function SignUpScreen() {
         </View>
 
         {/** ====== Action button -> Navigation to grade selection screen ======= */}
-        <Button
-          primaryBtnText={'Sign Up'}
-          onPrimaryBtnPress={handleSubmit}
-          secondaryBtnText1={'Already have an account?'}
-          secondaryBtnText2={'Sign In'}
-          onSecondaryBtnPress={() => navigation.navigate('SignIn')}
-        />
+        <View style={{ paddingTop: isAndroid ? '10%' : 0 }}>
+          <Button
+            primaryBtnText={'Sign Up'}
+            onPrimaryBtnPress={handleSubmit}
+            secondaryBtnText1={'Already have an account?'}
+            secondaryBtnText2={'Sign In'}
+            onSecondaryBtnPress={() => navigation.navigate('SignIn')}
+          />
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
