@@ -23,6 +23,7 @@ export type TabsStackParamList = {
 };
 
 export type RootStackParamList = {
+  navigate(arg0: string): void;
   Welcome: undefined;
   SignIn: undefined;
   SignUp: undefined;

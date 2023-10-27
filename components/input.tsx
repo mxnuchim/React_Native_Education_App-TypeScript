@@ -6,8 +6,8 @@ interface InputProps {
   placeholder: string; // Type for the placeholder text
   last?: boolean; // Type for the flag that controls whether it's the last input (optional)
   Icon?: any;
-  value: string; // Type for the input value
-  onChange: (text: string) => void; // Type for the input change handler
+  value?: string; // Type for the input value
+  onChange?: (text: string) => void; // Type for the input change handler
 }
 
 const Input = ({

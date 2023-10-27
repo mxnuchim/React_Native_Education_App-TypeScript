@@ -5,12 +5,12 @@ import { images } from '../../assets';
 import { welcomeScreenData } from '../../assets/data/data';
 import Button from '../../components/button';
 import { useNavigation } from '@react-navigation/native';
-import { RootStackScreenProps } from '../../types';
+import { RootStackParamList, RootStackScreenProps } from '../../types';
 
 const { welcome } = images;
 
 export default function WelcomeScreen() {
-  const { navigation } = useNavigation<RootStackScreenProps<'SignUp'>>();
+  const navigation = useNavigation<RootStackParamList>();
   return (
     <SafeAreaView className="flex-1 bg-bgWhite">
       <View className="flex-1 flex justify-around my-4">
