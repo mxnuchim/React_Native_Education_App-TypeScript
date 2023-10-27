@@ -16,6 +16,7 @@ import { images } from '../../assets';
 import { RootStackParamList } from '../../types';
 import Input from '../../components/input';
 import Button from '../../components/button';
+import * as Animatable from 'react-native-reanimated';
 
 const { signup } = images;
 

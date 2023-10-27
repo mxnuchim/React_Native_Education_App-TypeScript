@@ -6,6 +6,7 @@ import {
   FlatList,
   ScrollView,
   Platform,
+  StyleSheet,
 } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -30,6 +31,15 @@ import AreaFilter from '../components/home/areaFilter';
 import SubjectFilter from '../components/home/subjectFilter';
 import { themeColors } from '../theme/colors';
 import { Institution, Teacher } from '../types';
+import Animated, {
+  useAnimatedRef,
+  useAnimatedStyle,
+  useDerivedValue,
+  useSharedValue,
+  withSpring,
+  withTiming,
+} from 'react-native-reanimated';
+import Collapsible from 'react-native-collapsible';
 
 const { avatar } = images;
 
@@ -153,7 +163,8 @@ export default function HomeScreen() {
           />
 
           {/**============== Teacher Filters ==================== */}
-          {teachersFilterVisible ? (
+
+          <Collapsible collapsed={!teachersFilterVisible}>
             <View className="flex flex-col my-5 space-y-2">
               <AreaFilter filters={areaFilters} />
               <SubjectFilter
@@ -161,7 +172,7 @@ export default function HomeScreen() {
                 onSubjectSelect={filterTeachersBySubject}
               />
             </View>
-          ) : null}
+          </Collapsible>
 
           {/** ========================= Render List of Teachers =========================== */}
 
@@ -188,11 +199,11 @@ export default function HomeScreen() {
           />
 
           {/**============== Institution Filters ==================== */}
-          {institutionsFilterVisible ? (
+          <Collapsible collapsed={!institutionsFilterVisible}>
             <View className="flex flex-col mt-5 space-y-2">
               <AreaFilter filters={areaFilters} />
             </View>
-          ) : null}
+          </Collapsible>
 
           {/** ========================= Render List of institutions =========================== */}
           <View

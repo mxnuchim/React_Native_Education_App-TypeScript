@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { ChevronDownIcon, ChevronUpIcon } from 'react-native-heroicons/solid';
 import { images } from '../assets';
 import { themeColors } from '../theme/colors';
+import Collapsible from 'react-native-collapsible';
 
 interface SubjectPickerProps {
   grades: string;
@@ -43,7 +44,7 @@ const SubjectPicker = ({ grades }: SubjectPickerProps) => {
         </View>
 
         {/** ======================== Dropdown with all available subjects ============================== */}
-        {showDropDown ? (
+        <Collapsible collapsed={!showDropDown}>
           <FlatList
             data={subjectOptions}
             numColumns={2}
@@ -71,7 +72,7 @@ const SubjectPicker = ({ grades }: SubjectPickerProps) => {
             )}
             keyExtractor={(item) => item?.label}
           />
-        ) : null}
+        </Collapsible>
       </Pressable>
     </View>
   );
