@@ -35,3 +35,35 @@ export type TabsStackScreenProps<T extends keyof TabsStackParamList> =
 
 export type RootStackScreenProps<T extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, T>;
+
+export type Teacher = {
+  name: string;
+  subject: string;
+  image: any;
+};
+
+// Type for institution data
+export type Institution = {
+  name: string;
+  field: string;
+  description: string;
+  rating: string;
+  reviews: string;
+  image: any;
+};
+
+// Type for welcome screen data
+export type WelcomeScreenData = {
+  title: string;
+  subtitle: string;
+};
+
+// Type for grades data
+export type GradesData = string[];
+
+// Type for provinces data
+export type ProvincesData = string[];
+
+// Type for area filters and subject filters
+export type AreaFilter = string[];
+export type SubjectFilter = string[];
