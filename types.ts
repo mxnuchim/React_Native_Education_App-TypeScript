@@ -5,6 +5,9 @@ import {
 } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
+export type RootStackScreenProps<T extends keyof RootStackParamList> =
+  NativeStackScreenProps<RootStackParamList, T>;
+
 export type AuthStackParamList = {
   Welcome: undefined;
   SignIn: undefined;
@@ -20,21 +23,16 @@ export type TabsStackParamList = {
 };
 
 export type RootStackParamList = {
-  TabsStack: NavigatorScreenParams<TabsStackParamList>;
-  Details: {
-    id: string;
-  };
-  Auth: any;
+  Welcome: undefined;
+  SignIn: undefined;
+  SignUp: undefined;
+  SelectGrade: undefined;
+  SelectProvince: undefined;
+  Home: undefined;
+  Explore: undefined;
+  Stream: undefined;
+  Classwork: undefined;
 };
-
-export type TabsStackScreenProps<T extends keyof TabsStackParamList> =
-  CompositeScreenProps<
-    BottomTabScreenProps<TabsStackParamList, T>,
-    RootStackScreenProps<'TabsStack'>
-  >;
-
-export type RootStackScreenProps<T extends keyof RootStackParamList> =
-  NativeStackScreenProps<RootStackParamList, T>;
 
 export type Teacher = {
   name: string;

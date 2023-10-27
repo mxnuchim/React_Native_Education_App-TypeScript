@@ -10,8 +10,8 @@ export default function App() {
 
   const loadCustomFont = async () => {
     await Font.loadAsync({
-      exo: require('./assets/fonts/Exo/Exo-Regular.otf'),
-      exoSemibold: require('./assets/fonts/Exo/Exo-DemiBold.otf'),
+      exo: require('./assets/fonts/Exo/static/Exo-Regular.ttf'),
+      exoSemibold: require('./assets/fonts/Exo/static/Exo-SemiBold.ttf'),
       roboto: require('./assets/fonts/Roboto/Roboto-Light.ttf'),
       robotoBold: require('./assets/fonts/Roboto/Roboto-Bold.ttf'),
     });
@@ -24,11 +24,7 @@ export default function App() {
   }, []);
 
   if (!isFontLoaded) {
-    return (
-      <View className="flex flex-1 items-center justify-center">
-        <Text className="text-red-500 font-roboto">E spoil o</Text>
-      </View>
-    );
+    return null;
   }
 
   return (

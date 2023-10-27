@@ -1,14 +1,18 @@
-import { View, Text, Image } from 'react-native';
-import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from '../screens/HomeScreen';
+import { Image } from 'react-native';
+import { images } from '../assets';
 import ClassworkScreen from '../screens/ClassworkScreen';
+import HomeScreen from '../screens/HomeScreen';
 import StreamScreen from '../screens/StreamScreen';
 import { themeColors } from '../theme/colors';
-import { TabsStackParamList } from '../types';
-import { images } from '../assets';
+import { RootStackParamList } from '../types';
 
-const { streamIcon, exploreIcon, classWorkIcon } = images;
+{
+  /** ============== Bottom Tab Navigator =================== */
+}
+const Tab = createBottomTabNavigator<RootStackParamList>();
+
+const { streamIcon, classWorkIcon, exploreIcon } = images;
 const extraTabOptions = {
   tabBarLabelStyle: { fontFamily: 'exo' },
   tabBarStyle: { borderTopRightRadius: 12, borderTopLeftRadius: 12 },
@@ -16,16 +20,10 @@ const extraTabOptions = {
   tabBarInactiveTintColor: themeColors.darkGrayText,
 };
 
-const TabsStack = createBottomTabNavigator<TabsStackParamList>();
-
-const TabsNavigator = () => {
+export default function BottomTabNavigator() {
   return (
-    <TabsStack.Navigator
-      screenOptions={{
-        tabBarShowLabel: false,
-      }}
-    >
-      <TabsStack.Screen
+    <Tab.Navigator initialRouteName="Explore">
+      <Tab.Screen
         name="Explore"
         component={HomeScreen}
         options={{
@@ -47,10 +45,11 @@ const TabsNavigator = () => {
           ...extraTabOptions,
         }}
       />
-      <TabsStack.Screen
+      <Tab.Screen
         name="Stream"
         component={StreamScreen}
         options={{
+          headerShown: false,
           tabBarIcon(props) {
             return (
               // Custom tab bar icon
@@ -68,10 +67,11 @@ const TabsNavigator = () => {
           ...extraTabOptions,
         }}
       />
-      <TabsStack.Screen
+      <Tab.Screen
         name="Classwork"
         component={ClassworkScreen}
         options={{
+          headerShown: false,
           tabBarIcon(props) {
             return (
               // Custom tab bar icon
@@ -89,8 +89,6 @@ const TabsNavigator = () => {
           ...extraTabOptions,
         }}
       />
-    </TabsStack.Navigator>
+    </Tab.Navigator>
   );
-};
-
-export default TabsNavigator;
+}

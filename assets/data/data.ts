@@ -1,4 +1,5 @@
 import { images } from '..';
+import { GradesData, Institution, ProvincesData, Teacher } from '../../types';
 
 const { teacher1, teacher2, teacher3, teacher4, school1, school2, school3 } =
   images;
@@ -7,14 +8,14 @@ export const welcomeScreenData = {
   subtitle: `Please Sign in to view personalized recommendations`,
 };
 
-export const gradesData = [
+export const gradesData: GradesData = [
   'Grade 1-5',
   'Grade 6-9',
   'Grade 10-11',
   'Grade 12-13',
 ];
 
-export const provincesData = [
+export const provincesData: ProvincesData = [
   'Central',
   'Eastern',
   'North Central',
@@ -26,7 +27,7 @@ export const provincesData = [
   'western',
 ];
 
-export const teacherData = [
+export const teacherData: Array<Teacher> = [
   {
     name: 'Cassie Valdez',
     subject: 'Biology',
@@ -49,7 +50,7 @@ export const teacherData = [
   },
 ];
 
-export const institutionData = [
+export const institutionData: Array<Institution> = [
   {
     name: 'Victory College',
     field: 'Bio Science',
@@ -87,9 +88,9 @@ export const institutionData = [
   },
 ];
 
-export const areaFilters = ['Island', 'Province', 'Districts'];
+export const areaFilters: Array<string> = ['Island', 'Province', 'Districts'];
 
-export const subjectFilters = [
+export const subjectFilters: Array<string> = [
   'All Subjects',
   'Biology',
   'Chemistry',
