@@ -1,4 +1,11 @@
-import { Platform, Text, TextInput, View } from 'react-native';
+import {
+  NativeSyntheticEvent,
+  Platform,
+  Text,
+  TextInput,
+  TextInputFocusEventData,
+  View,
+} from 'react-native';
 import React, { JSXElementConstructor } from 'react';
 
 interface SearchInputProps {
@@ -6,6 +13,8 @@ interface SearchInputProps {
   Icon: any;
   value: string;
   onChange?: (text: string) => void;
+  onFocus?: (e: any) => void;
+  onBlur?: (e: any) => void;
 }
 
 const SearchInput = ({
@@ -13,6 +22,8 @@ const SearchInput = ({
   Icon,
   value,
   onChange,
+  onFocus,
+  onBlur,
 }: SearchInputProps) => {
   return (
     <View className={`flex flex-col gap-2 relative `}>
@@ -25,6 +36,10 @@ const SearchInput = ({
           placeholder={placeholder}
           value={value}
           onChangeText={onChange}
+          onBlur={onBlur}
+          onFocus={Platform.OS === 'web' ? onFocus : undefined}
+          onPressIn={Platform.OS === 'web' ? undefined : onFocus}
+          onEndEditing={onBlur}
         />
         {/** ====================== Search Icon ============================= */}
 

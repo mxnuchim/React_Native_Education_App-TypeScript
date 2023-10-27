@@ -7,6 +7,7 @@ import {
   ScrollView,
   Platform,
   StyleSheet,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -53,6 +54,14 @@ export default function HomeScreen() {
     useState<boolean>(false);
   const [institutionsFilterVisible, setInstitutionsFilterVisible] =
     useState<boolean>(false);
+  const [searchOpen, setSearchOpen] = useState<boolean>(false);
+
+  /**
+   * @description Function to toggle the teachers filter visibility
+   */
+  const toggleSearchOpen = () => {
+    setSearchOpen(!searchOpen);
+  };
 
   /**
    * @description Function to toggle the teachers filter visibility
@@ -115,22 +124,26 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView
-      className={`bg-bgWhite px-7 pt-5 pb-[-35px] flex-1 ${
+      className={`bg-bgWhite px-7 pb-[-35px] ${
         Platform.OS === 'web' ? 'px-10' : ''
-      }`}
+      } ${searchOpen ? 'pt-0' : 'pt-5'}`}
     >
       {/**============= Header Area =================== */}
-      <View className="flex flex-row items-center justify-between">
-        <View className="">
-          {/** Get greeting based on current time */}
-          <HeaderText text={getLocalGreeting()} />
-          <Text className="font-exo font-semibold text-lg">Hardline Scott</Text>
+      <Collapsible collapsed={searchOpen} duration={600}>
+        <View className="flex flex-row items-center justify-between">
+          <View className="">
+            {/** Get greeting based on current time */}
+            <HeaderText text={getLocalGreeting()} />
+            <Text className="font-exo font-semibold text-lg">
+              Hardline Scott
+            </Text>
+          </View>
+          {/** ============= Profile image/avatar ============ */}
+          <View className="bg-bgWhite shadow-xl rounded-xl">
+            <Image source={avatar} style={{ height: 62, width: 62 }} />
+          </View>
         </View>
-        {/** ============= Profile image/avatar ============ */}
-        <View className="bg-bgWhite shadow-xl rounded-xl">
-          <Image source={avatar} style={{ height: 62, width: 62 }} />
-        </View>
-      </View>
+      </Collapsible>
       {/** ================ Search Input  ========================= */}
       <View className="flex flex-row items-center justify-between my-7">
         <View className="flex-1">
@@ -139,6 +152,8 @@ export default function HomeScreen() {
             value={searchQuery}
             onChange={handleSearchChange}
             Icon={MagnifyingGlassIcon}
+            onFocus={toggleSearchOpen}
+            onBlur={toggleSearchOpen}
           />
         </View>
         {/** ==================== Filter Icon ================================= */}
@@ -148,23 +163,27 @@ export default function HomeScreen() {
       </View>
       <ScrollView
         showsVerticalScrollIndicator={false}
-        className=" h-full w-full"
+        className={`h-full w-full`}
+        automaticallyAdjustKeyboardInsets
+        contentContainerStyle={{ paddingBottom: '50%' }}
       >
         {/** ========================= Teachers Section =========================== */}
         <View className="mt-2">
-          <SectionHeader
-            title={'Popular Teachers'}
-            onFilterPress={toggleTeachersFilter}
-            tintColor={
-              teachersFilterVisible
-                ? themeColors.bgPurple
-                : themeColors.lightGrayText
-            }
-          />
+          <Pressable onPress={() => setSearchOpen(false)} className={``}>
+            <SectionHeader
+              title={'Popular Teachers'}
+              onFilterPress={toggleTeachersFilter}
+              tintColor={
+                teachersFilterVisible
+                  ? themeColors.bgPurple
+                  : themeColors.lightGrayText
+              }
+            />
+          </Pressable>
 
           {/**============== Teacher Filters ==================== */}
 
-          <Collapsible collapsed={!teachersFilterVisible}>
+          <Collapsible collapsed={!teachersFilterVisible} duration={500}>
             <View className="flex flex-col my-5 space-y-2">
               <AreaFilter filters={areaFilters} />
               <SubjectFilter
@@ -180,7 +199,9 @@ export default function HomeScreen() {
             data={teachers}
             horizontal={true}
             className="w-full py-4 bg-transparent"
-            renderItem={({ item }) => <TeacherItem teacher={item} />}
+            renderItem={({ item }) => (
+              <TeacherItem teacher={item} onPress={() => {}} />
+            )}
             keyExtractor={(item, index) => item.name}
             showsHorizontalScrollIndicator={false}
           />
@@ -188,18 +209,20 @@ export default function HomeScreen() {
 
         {/** ========================= Institutions Section =========================== */}
         <View className="mt-2">
-          <SectionHeader
-            title={'Popular Institutions'}
-            onFilterPress={toggleInstitutionsFilter}
-            tintColor={
-              institutionsFilterVisible
-                ? themeColors.bgPurple
-                : themeColors.lightGrayText
-            }
-          />
+          <Pressable onPress={() => setSearchOpen(false)} className={``}>
+            <SectionHeader
+              title={'Popular Institutions'}
+              onFilterPress={toggleInstitutionsFilter}
+              tintColor={
+                institutionsFilterVisible
+                  ? themeColors.bgPurple
+                  : themeColors.lightGrayText
+              }
+            />
+          </Pressable>
 
           {/**============== Institution Filters ==================== */}
-          <Collapsible collapsed={!institutionsFilterVisible}>
+          <Collapsible collapsed={!institutionsFilterVisible} duration={500}>
             <View className="flex flex-col mt-5 space-y-2">
               <AreaFilter filters={areaFilters} />
             </View>

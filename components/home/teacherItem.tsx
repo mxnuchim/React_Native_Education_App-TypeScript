@@ -4,9 +4,10 @@ import { Teacher } from '../../types';
 
 interface TeacherItemProps {
   teacher: Teacher;
+  onPress?: () => void;
 }
 
-const TeacherItem = ({ teacher }: TeacherItemProps) => {
+const TeacherItem = ({ teacher, onPress }: TeacherItemProps) => {
   return (
     <View className="max-w-[126px] min-h-[176px] bg-white p-2 rounded-xl shadow mx-2">
       {/**============== Teacher Image ================ */}
