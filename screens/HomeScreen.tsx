@@ -8,6 +8,7 @@ import {
   Platform,
   StyleSheet,
   TouchableWithoutFeedback,
+  Keyboard,
 } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -32,14 +33,6 @@ import AreaFilter from '../components/home/areaFilter';
 import SubjectFilter from '../components/home/subjectFilter';
 import { themeColors } from '../theme/colors';
 import { Institution, Teacher } from '../types';
-import Animated, {
-  useAnimatedRef,
-  useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withSpring,
-  withTiming,
-} from 'react-native-reanimated';
 import Collapsible from 'react-native-collapsible';
 
 const { avatar } = images;
@@ -164,7 +157,6 @@ export default function HomeScreen() {
       <ScrollView
         showsVerticalScrollIndicator={false}
         className={`h-full w-full`}
-        automaticallyAdjustKeyboardInsets
         contentContainerStyle={{ paddingBottom: '50%' }}
       >
         {/** ========================= Teachers Section =========================== */}
